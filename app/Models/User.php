@@ -25,8 +25,14 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'apaterno',
+        'amaterno',
+        'id_genero',
+        'id_delegacion',
+        'telefono',
         'email',
         'password',
+        'slug',
     ];
 
     /**
@@ -58,4 +64,13 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function delegacion()
+    {
+        return $this->belongsTo(Delegacion::class, 'id_delegacion', 'id');
+    }    
+    public function genero()
+    {
+        return $this->belongsTo(Genero::class, 'id_genero', 'id');
+    }     
 }

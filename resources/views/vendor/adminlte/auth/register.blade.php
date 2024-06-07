@@ -17,10 +17,38 @@
     <form action="{{ $register_url }}" method="post">
         @csrf
 
+     
+
+        <?php
+            $delegaciones = App\Models\Delegacion::orderBy('delegacion')->get(); 
+        ?>
+
+        {{-- Género field --}}
+        <div class="input-group mb-3">
+            <select name="delegacion" class="form-control">
+                <option value="">SELECCIONA DELEGACION</option>
+                @foreach($delegaciones as $delegacion)
+                    <option value="{{ $delegacion->id }}" {{ old('delegacion') == $delegacion->id ? 'selected' : '' }}>{{ $delegacion->delegacion }}</option>
+                @endforeach
+            </select>
+
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fas fa-venus-mars"></span>
+                </div>
+            </div>
+
+            @error('delegacion')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror            
+        </div>  
+
         {{-- Name field --}}
         <div class="input-group mb-3">
             <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"
-                   value="{{ old('name') }}" placeholder="{{ __('adminlte::adminlte.full_name') }}" autofocus>
+                   value="{{ old('name') }}" placeholder="NOMBRE" autofocus>
 
             <div class="input-group-append">
                 <div class="input-group-text">
@@ -34,6 +62,91 @@
                 </span>
             @enderror
         </div>
+
+
+        {{-- Primer apellido field --}}
+        <div class="input-group mb-3">
+            <input type="text" name="apaterno" class="form-control @error('apaterno') is-invalid @enderror"
+                   value="{{ old('apaterno') }}" placeholder="PRIMER APELLIDO" autofocus>
+
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fas fa-user {{ config('adminlte.classes_auth_icon', '') }}"></span>
+                </div>
+            </div>
+
+            @error('apaterno')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
+
+
+        {{-- Segundo apellido field --}}
+        <div class="input-group mb-3">
+            <input type="text" name="amaterno" class="form-control @error('amaterno') is-invalid @enderror"
+                   value="{{ old('amaterno') }}" placeholder="SEGUNDO APELLIDO" autofocus>
+
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fas fa-user {{ config('adminlte.classes_auth_icon', '') }}"></span>
+                </div>
+            </div>
+
+            @error('amaterno')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
+
+
+        {{-- Segundo apellido field --}}
+        <div class="input-group mb-3">
+            <input type="text" name="telefono" class="form-control @error('telefono') is-invalid @enderror"
+                   value="{{ old('telefono') }}" placeholder="TELEFONO" autofocus>
+
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fas fa-user {{ config('adminlte.classes_auth_icon', '') }}"></span>
+                </div>
+            </div>
+
+            @error('telefono')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
+
+
+        <?php
+            $generos = App\Models\Genero::all();
+        ?>
+
+        {{-- Género field --}}
+        <div class="input-group mb-3">
+            <select name="genero" class="form-control">
+                <option value="">SELECCIONA GÉNERO</option>
+                @foreach($generos as $genero)
+                    <option value="{{ $genero->id }}"{{ old('genero') == $genero->id ? 'selected' : '' }}>{{ $genero->genero }}</option>
+                @endforeach
+            </select>
+
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fas fa-venus-mars"></span>
+                </div>
+            </div>
+
+            @error('genero')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror            
+        </div>   
+
 
         {{-- Email field --}}
         <div class="input-group mb-3">

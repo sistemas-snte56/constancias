@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 use Laravel\Jetstream\Jetstream;
+use Illuminate\Support\Str;
 
 class CreateNewUser implements CreatesNewUsers
 {
@@ -19,17 +20,29 @@ class CreateNewUser implements CreatesNewUsers
      */
     public function create(array $input): User
     {
+
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
+            'apaterno' => ['required', 'string', 'max:255'],
+            // 'amaterno' => ['required', 'string', 'max:255'],
+            'genero' => ['required', 'int', 'max:255'],
+            'delegacion' => ['required', 'int', 'max:255'],
+            'telefono' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => $this->passwordRules(),
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
         ])->validate();
 
         return User::create([
+            'id_delegacion' => $input['delegacion'],
             'name' => $input['name'],
+            'apaterno' => $input['apaterno'],
+            'amaterno' => $input['amaterno'],
+            'id_genero' => $input['genero'],
+            'telefono' => $input['telefono'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
+            'slug' => Str::slug($input['name'] . '-' . $input['apaterno'] . '-' . $input['amaterno']),
         ]);
     }
 }

@@ -30,4 +30,10 @@ class Delegacion extends Model
     {
         return $this->hasMany(User::class, 'id_delegacion');
     }    
+
+    public function maestros()
+    {
+        return $this->hasMany(Maestro::class, 'id_delegacion');
+    }
+
 }

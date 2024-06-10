@@ -72,5 +72,9 @@ class User extends Authenticatable
     public function genero()
     {
         return $this->belongsTo(Genero::class, 'id_genero', 'id');
-    }     
+    }    
+    
+    public function maestros() {
+        return $this->hasMany(Maestro::class,'id_user','id');
+    }
 }

@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'Sección 56',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -110,7 +110,7 @@ return [
     */
 
     'preloader' => [
-        'enabled' => true,
+        'enabled' => false,
         'mode' => 'fullscreen',
         'img' => [
             'path' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
@@ -322,6 +322,14 @@ return [
             'label' => 4,
             'label_color' => 'success',
         ],
+
+        ['header' => 'CONFIGURACIÓN'],
+        [
+            'text' => 'Users',
+            'route' => 'user.index',
+            'icon' => 'fas fa-fw fa-user',
+        ],
+
         ['header' => 'account_settings'],
         [
             'text' => 'profile',
@@ -425,7 +433,7 @@ return [
 
     'plugins' => [
         'Datatables' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
@@ -470,7 +478,7 @@ return [
             ],
         ],
         'Sweetalert2' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',

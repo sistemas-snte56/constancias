@@ -9,25 +9,24 @@
 @section('content')
     
     <div class="card">
-            <div class="card-header" style="background-color: #ee7a00; text">
-                <h4 style="color: white;"><strong>Contenido</strong></h4>
+            <div class="card-header" style="background-color: #ee7a00;">
+                <h4 style="color:#FFFFFF;"><strong>LISTADO DE SECRETARIOS</strong></h4>
             </div>
         <div class="card-body">
             <div class="card-body">
-                <h5 class="card-title">Welcome to this beautiful admin panel.</h5>
+                <h5 class="card-title"><strong>SECRETARIOS GENERALES Y REPRESENTANTES DE C.T.s DE LA SECCIÓN 56</strong></h5>
                 <p class="card-text">
                     {{-- Setup data for datatables --}}
                     @php
                         $heads = [
-                            'NO',
                             'ID',
                             'REGIÓN', 
                             'DELEGACION', 
                             'NIVEL', 
                             'SEDE', 
-                            'INICIO', 
-                            'FINAL', 
-                            ['label' => 'ACCIONES', 'no-export' => true, 'width' => 15]
+                            'SECRETARIO GENERAL / REPRESENTANTE DE C.T.', 
+                            'EMAIL', 
+                            ['label' => 'ACCIONES', 'no-export' => true, 'width' => 8]
                         ];
 
                         $btnEdit = '';
@@ -44,10 +43,9 @@
                             'columns' => [
                                 ['orderable' => false,'visible' => true],
                                 ['orderable' => false,'visible' => true],
-                                ['orderable' => true, 'visible' => true], 
-                                ['orderable' => false,'visible' => true], 
-                                ['orderable' => false,'visible' => true], 
-                                ['orderable' => false,'visible' => true], 
+                                ['orderable' => false, 'visible' => true], 
+                                ['orderable' => false, 'visible' => false], 
+                                ['orderable' => false, 'visible' => false], 
                                 ['orderable' => false,'visible' => true], 
                                 ['orderable' => false,'visible' => true], 
                                 ['orderable' => false,'visible' => true], 
@@ -70,16 +68,21 @@
                                     <td>{!! $user->id !!}</td>
                                     <td>{{$user->delegacion->region->region}} - {{$user->delegacion->region->sede}}</td>
                                     <td> {{ $user->delegacion->delegacion }} </td>
+                                    <td> {{ $user->delegacion->sede }} </td>
+                                    <td> {{ $user->delegacion->nivel }} </td>
                                     <td>{!! $user->name !!} {!! $user->apaterno !!} {!! $user->amaterno !!}</td>
                                     <td>{!! $user->email !!}</td>
-                                    <td>{!! $user->telefono !!}</td>
-                                    <td>#</td>
-                                    <td>#</td>
                                     <td>
-                                        {{ $btnDetails }}
-                                        <a href="#" class="btn btn-xs btn-default text-teal mx-1 shadow" title="Mostrar">
+                                        
+
+                                        <a href="{{route('user.show',$user)}}" class="btn btn-xs btn-default text-teal mx-1 shadow" title="Mostrar">
                                             <i class="fa fa-lg fa-fw fa-eye"></i>
                                         </a>                            
+
+
+                                        <a href="{{route('user.edit',$user)}}" class="btn btn-xs btn-default text-primary mx-1 shadow" title="Editar">
+                                            <i class="fa fa-lg fa-fw fa-pen"></i>
+                                        </a> 
 
                                         <form action="" method="post" class="formEliminar" style="display: inline">
                                             @csrf
@@ -87,13 +90,6 @@
                                             {!! $btnDelete !!}
                                         </form>
 
-                                        <a href="#" target="_blank" class="btn btn-xs buttons-print btn-default  mx-1 " title="Imprimir hoja">
-                                            <i class="fas fa-fw fa-lg fa-print"></i>
-                                        </a>                            
-
-                                        <a href="#" target="_blank" class="btn btn-xs buttons-print btn-default  mx-1 " title="Imprimir hoja">
-                                            <i class="fas fa-fw fa-lg fa-edit"></i>
-                                        </a>                            
                                     </td>
                                 </tr>
                             @endforeach

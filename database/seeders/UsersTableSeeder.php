@@ -290,6 +290,7 @@ class UsersTableSeeder extends Seeder
     */
 
     return [
+        ['id_delegacion' => 138,'name' => 'VICENTE','apaterno' => 'JUAREZ','amaterno' => 'ALARCON','id_genero' =>1,'email' => 'admin.credenciales@seccion56.org','telefono' =>'1111111111','password' => Hash::make('Admin2024'),'slug'=>'vicente-juarez-alarcon'],
         ['id_delegacion' => 2,'name' => 'LUÍS ALFREDO','apaterno' => 'HERRERA','amaterno' => 'HERNÁNDEZ','id_genero' =>1,'email' => 'snte56d-ii-59panuco@outlook.com','telefono' =>'1111111111','password' => Hash::make('snte56_002'),'slug'=>'luís-alfredo-herrera-hernández'],
         ['id_delegacion' => 3,'name' => 'JORGE LUIS','apaterno' => 'BERNABE','amaterno' => 'GARCIA','id_genero' =>1,'email' => 'jlberna_18@hotmail.com','telefono' =>'1111111111','password' => Hash::make('snte56_003'),'slug'=>'jorge-luis-bernabe-garcia'],
         ['id_delegacion' => 4,'name' => 'PÁVEL ISRAEL','apaterno' => 'GARCÍA','amaterno' => 'GÓMEZ','id_genero' =>1,'email' => 'pavelisraelgarciagomez@gmail.com','telefono' =>'1111111111','password' => Hash::make('snte56_004'),'slug'=>'pável-israel-garcía-gómez'],

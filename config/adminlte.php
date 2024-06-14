@@ -305,6 +305,30 @@ return [
             'topnav_right' => true,
         ],
 
+
+
+
+
+        [
+            'text' => 'Inicio',
+            'url' => '/dashboard',
+            'icon' => 'fas fa-fw fa-home',
+            'topnav' => true,            
+        ],
+
+        
+        [
+            'text' => 'User',
+            'route' => 'user.index',
+            'icon' => 'fas fa-fw fa-user',
+            'topnav' => true,            
+        ],
+
+
+
+
+
+
         // Sidebar items:
         [
             'type' => 'sidebar-menu-search',
@@ -483,7 +507,7 @@ return [
                 [
                     'type' => 'js',
                     'asset' => false,
-                    'location' => '//cdn.jsdelivr.net/npm/sweetalert2@8',
+                    'location' => '//cdn.jsdelivr.net/npm/sweetalert2@11',
                 ],
             ],
         ],
